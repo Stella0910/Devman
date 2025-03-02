@@ -10,8 +10,8 @@ server = smtplib.SMTP_SSL('smtp.yandex.ru', 465)
 server.login(login, password)
 
 letter = """\
-From: i@stellad.ru
-To: i@stellad.ru
+From: {sender_address}
+To: {recipient_address}
 Subject: Приглашение!
 Content-Type: text/plain; charset="UTF-8";
 
@@ -32,13 +32,13 @@ Content-Type: text/plain; charset="UTF-8";
 Регистрируйся → {website}  
 На курсы, которые еще не вышли, можно подписаться и получить уведомление о релизе сразу на имейл."""
 
+sender_address = 'i@stellad.ru'
+recipient_address = 'i@stellad.ru'
 friend_name = "Клим"
-
 sender_name = "Стелла"
-
 website = "https://dvmn.org/profession-ref-program/aniretake0910/yS1WO/"
 
-letter = letter.format(friend=friend_name, sender=sender_name, website=website).encode("UTF-8")
+letter = letter.format(sender_address=sender_address, recipient_address=recipient_address, friend=friend_name, sender=sender_name, website=website).encode("UTF-8")
 
-server.sendmail('i@stellad.ru', 'i@stellad.ru', letter)
+server.sendmail(sender_address, recipient_address, letter)
 server.quit()
