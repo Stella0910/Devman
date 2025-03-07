@@ -25,4 +25,4 @@ cropped_middle_green_image = green_image.crop(middle_coordinates)
 new_shifted_image = Image.merge("RGB", (shifted_red_image, cropped_middle_green_image, shifted_blue_image))
 
 new_shifted_image.thumbnail((80, 80))
-new_shifted_image.save("./lesson4/avatar_monro.jpg")
+new_shifted_image.save("avatar_monro.jpg")
